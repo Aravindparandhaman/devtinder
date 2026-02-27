@@ -15,6 +15,12 @@ app.delete("/delete", (req,res) =>{
     console.log("Data deleted successfully")
 })
 
+app.patch("/delete", (req,res) =>{
+    res.send("Data updated Successfully")
+    console.log("Data deleted successfully")
+})
+
+
 
 app.use("/", (req, res) =>{
     res.send("slash screen")
