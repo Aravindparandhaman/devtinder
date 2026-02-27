@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
 
+
+
 app.get("/user", (req, res) =>{
     res.send({firstNname:"Aravind", lastName:"Dheena" })
+    console.log("Data fetched successfully")
 })
 
 app.post("/user", (req,res) =>{
@@ -21,11 +24,40 @@ app.patch("/delete", (req,res) =>{
 })
 
 
-
-app.use("/", (req, res) =>{
-    res.send("slash screen")
-    console.log("Splash screen is runing successfully")
+app.get("/data", (req, res, next) =>{
+    console.log("Router 10 Data getting successfully ")
+    // res.send("Router 10")
+    next();
 })
+
+
+app.get("/data", (req, res, next) =>{
+    console.log("Router 0 Data getting successfully ")
+    // res.send("Router 0")
+    next();
+})
+
+app.get("/data", (req, res, next) =>{
+    console.log("Router 1 Data getting successfully ")
+    // res.send("Router 1")
+    next();
+}, (req, res, next) =>{
+    console.log("Router 2 Data getting successfully ")
+    // res.send("Router 2")
+    next();
+
+
+},(req, res, next) =>{
+    console.log("Router 3 Data getting successfully ")
+    res.send("Router 3")}
+ )
+
+
+
+// // app.use("/", (req, res) =>{
+// //     res.send("slash screen")
+// //     console.log("Splash screen is runing successfully")
+// })
 
 
 
